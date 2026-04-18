@@ -1,9 +1,11 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
+
 const wetherpage = () => {
 
-  const [apikey , setapikey] = useState('2775a5ab94434e439c144541261301')
+  // const [apikey , setapikey] = useState('2775a5ab94434e439c144541261301')
+  const apiKey = import.meta.env.VITE_WEATHER_API_KEY
   const [city, setcity] = useState("Bhopal")
   const [temp, settemp] = useState("")
   const [condition, setcondition] = useState('')
@@ -17,7 +19,7 @@ const wetherpage = () => {
 
 
   const wetaherfetch = async()=>{
-    let response = await axios.get(`http://api.weatherapi.com/v1/current.json?key=${apikey}&q=${city}`)
+    let response = await axios.get(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
    
     settemp(response.data.current.temp_c)
     setcondition(response.data.current.condition.text)
